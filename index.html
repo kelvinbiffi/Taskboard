@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="taskBoard">
+  <head>
+    <meta charset="UTF-8" />
+    <link data-require="bootstrap-css@*" data-semver="3.2.0" rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="scripts/angular.js" data-semver="1.2.17" data-require="angular.js@1.2.17"></script>
+    <script src="scripts/angular-mocks.js" data-semver="1.2.17" data-require="angular-mocks@1.2.17"></script>
+    <script src="scripts/angular-resource.js" data-require="angular-resource@1.2.17" data-semver="1.2.17"></script>
+    <script src="scripts/jquery.js" data-semver="1.11.0" data-require="jquery@1.11.0"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.11.0.min.js" data-require="angular-ui-bootstrap@0.11.0" data-semver="0.11.0"></script>
+    <script src="app/app.js"></script>
+    <script src="app/app-backend.js"></script>
+    <script src="app/services/serverDataModel.js"></script>
+    <script src="app/services/HttpService.js"></script>
+    <script src="app\controllers\app-controller.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body ng-controller="boardController as ctrl" class="container-fluid">
+    <h1>Task Board</h1>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Changelist / Build</th>
+        <th>Owne</th>
+        <th>Time Started</th>
+        <th>State</th>
+        <th>Metrics</th>
+        <th>Buil</th>
+        <th>Unit Tes</th>
+        <th>Functional Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="task in tasks">
+        <td>Changelist / Build</td>
+        <td>Owne</td>
+        <td>Time Started</td>
+        <td>State</td>
+        <td>Metrics</td>
+        <td>Buil</td>
+        <td>Unit Tes</td>
+        <td>Functional Test</td>
+      </tr>
+    </tbody>
+  </table>
+  </body>
+</html>
