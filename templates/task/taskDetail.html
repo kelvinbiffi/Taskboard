@@ -1,0 +1,85 @@
+<div class="col-sm-10">
+  <div class="col-sm-3 {{ taskInfo.metrics.worked }} metrics">
+    <div class="col-sm-12 detail">
+      <h4>Metrics</h4>
+      
+      <div class="col-sm-6 {{ getArrow(taskInfo.metrics.test) }}">
+        <span class="metric">{{taskInfo.metrics.test}}</span>
+        <span class="label">Test</span>
+      </div>
+      <div class="col-sm-6 {{ getArrow(taskInfo.metrics.maintainability) }}">
+        <span class="metric">{{taskInfo.metrics.maintainability}}</span>
+        <span class="label">maintainability</span>
+      </div>
+      
+      <div class="col-sm-6 {{ getArrow(taskInfo.metrics.security) }}">
+        <span class="metric">{{taskInfo.metrics.security}}</span>
+        <span class="label">Security</span>
+      </div>
+      <div class="col-sm-6 {{getArrow(taskInfo.metrics.workmanship) }}">
+        <span class="metric">{{taskInfo.metrics.workmanship}}</span>
+        <span class="label">Workmanship</span>
+      </div>
+      
+    </div>
+  </div>
+  <div class="col-sm-3 {{ taskInfo.build.worked }}">
+    <div class="col-sm-12 detail build">
+      <h4>Build</h4>
+      <div class="col-sm-6 debug">
+        <img src="image/BuildInfo.png" alt="" />
+        <span>Debug</span>
+      </div>
+      <div class="col-sm-6 release">
+        <img src="image/BuildInfo.png" alt="" />
+        <span>Release</span>
+      </div>
+      <span>{{taskInfo.build.timeEnded}}</span>
+    </div>
+  </div>
+  <div class="col-sm-3 {{ taskInfo.unitTest.worked }}">
+    <div class="col-sm-12 detail test">
+      <h4>Unit Test</h4>
+      <div class="col-sm-9">
+        <canvas id="pie" class="chart chart-pie"
+          chart-colors="chartColors" chart-data="dataUnit" chart-labels="labelsUnit" chart-options="options">
+        </canvas>
+      </div>
+      <div class="col-sm-3 percent">
+        <span class="{{ (taskInfo.functionalTest.testsPassed > taskInfo.functionalTest.testsFail) ? 'passed' : 'fail' }}">{{taskInfo.unitTest.percentPassed}}%</span>
+        <span>tests passed</span>
+      </div>
+      <div class="covered">
+        <div class="success" style="width: {{taskInfo.unitTest.codeCovered}}%;"></div>
+        <div class="testInfo">
+          <span>{{taskInfo.unitTest.codeCovered}}%</span>
+          <span>code covered</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 {{ taskInfo.functionalTest.worked }}">
+    <div class="col-sm-12 detail test">
+      <h4>Functional Test</h4>
+      <div class="col-sm-9">
+        <canvas id="pie" class="chart chart-pie"
+          chart-colors="chartColors" chart-data="dataFunctional" chart-labels="labelsFunctional" chart-options="options">
+        </canvas>
+      </div>
+      <div class="col-sm-3 percent">
+        <span class="{{ (taskInfo.functionalTest.testsPassed > taskInfo.functionalTest.testsFail) ? 'passed' : 'fail' }}">{{taskInfo.functionalTest.percentPassed}}%</span>
+        <span>tests passed</span>
+      </div>
+      <div class="covered">
+        <div class="success" style="width: {{taskInfo.functionalTest.codeCovered}}%;"></div>
+        <div class="testInfo">
+          <span>{{taskInfo.functionalTest.codeCovered}}%</span>
+          <span>code covered</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-2 finalState">
+  <span>{{taskInfo.state}}</span>
+</div>

@@ -1,8 +1,7 @@
-angular.module('taskBoard').factory('HttpService', function($http) {
+app.factory('HttpService', function($http) {
     var service = {
         query: function() {
             return $http.get('/tasks');
-            
         }
     };
     

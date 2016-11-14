@@ -1,3 +1,252 @@
 body {
   background-color: #F2F2F2;
 }
+body .head {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+body .head div {
+  text-align: center;
+}
+body .head div:first-child {
+  text-align: left;
+}
+body .body {
+  text-align: center;
+}
+body .body .task-content {
+  padding: 3px 0;
+  margin: 5px 0;
+  border: 2px solid;
+}
+body .body .task-content .opened {
+  text-decoration: underline;
+}
+body .body .task-content div {
+  text-align: center;
+}
+body .body .task-content div:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+body .body .task-content div:first-child img {
+  width: 30px;
+}
+body .body .task-content div .state {
+  height: 32px;
+  width: 48px;
+  border: 2px solid;
+  display: inline-block;
+  position: relative;
+  border-color: #b0b0b2;
+  background-color: #CACACB;
+}
+body .body .task-content div .state.true {
+  border-color: #b0b0b2;
+  background-color: #568E31;
+}
+body .body .task-content div .state.false {
+  border-color: #b0b0b2;
+  background-color: #BC0008;
+}
+body .body .task-content div .state.Running::before {
+  content: " ";
+  float: left;
+  background-color: #6F9EC5;
+  width: 65%;
+  height: 100%;
+}
+body .body .task-content.Pending {
+  border-color: #CACACB;
+  background-color: #ffffff;
+}
+body .body .task-content.Pending div {
+  color: #CACACB;
+}
+body .body .task-content.Running {
+  border-color: #6F9EC5;
+  background-color: #ffffff;
+}
+body .body .task-content.Running div {
+  color: #6F9EC5;
+}
+body .body .task-content.Succeed,
+body .body .task-content.Accepted,
+body .body .task-content.Complete {
+  cursor: pointer;
+  border-color: #568E31;
+  background-color: #ffffff;
+}
+body .body .task-content.Succeed div,
+body .body .task-content.Accepted div,
+body .body .task-content.Complete div {
+  color: #568E31;
+}
+body .body .task-content.Fail,
+body .body .task-content.Rejected {
+  cursor: pointer;
+  border-color: #BC0008;
+  background-color: #ffffff;
+}
+body .body .task-content.Fail div,
+body .body .task-content.Rejected div {
+  color: #BC0008;
+}
+body .body .taskDetail {
+  padding: 0;
+  background: none!important;
+}
+body .body .taskDetail .detail {
+  -webkit-box-shadow: 1px 3px 13px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 3px 13px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 3px 13px 1px rgba(0, 0, 0, 0.4);
+  text-align: center!important;
+  margin-bottom: 20px;
+  padding: 5px;
+  min-height: 240px;
+}
+body .body .taskDetail .detail h4 {
+  text-align: left!important;
+  margin: 0;
+  margin-left: 5px;
+  padding-bottom: 15px;
+}
+body .body .taskDetail .true .detail {
+  border: 2px solid #568E31;
+  color: #568E31;
+}
+body .body .taskDetail .false .detail {
+  border: 2px solid #BC0008;
+  color: #BC0008;
+}
+body .body .taskDetail .metrics {
+  padding-left: 15px!important;
+}
+body .body .taskDetail .metrics .detail div {
+  position: relative;
+  padding: 0;
+}
+body .body .taskDetail .metrics .detail div::before {
+  content: " ";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+body .body .taskDetail .metrics .detail div.red {
+  color: #FFFFFF;
+}
+body .body .taskDetail .metrics .detail div.red::before {
+  background-color: #BE0712;
+}
+body .body .taskDetail .metrics .detail div.yellow {
+  color: #000000;
+}
+body .body .taskDetail .metrics .detail div.yellow::before {
+  background-color: #FED86E;
+}
+body .body .taskDetail .metrics .detail div.green {
+  color: #FFFFFF;
+}
+body .body .taskDetail .metrics .detail div.green::before {
+  background-color: #548039;
+}
+body .body .taskDetail .metrics .detail div span {
+  display: block;
+  padding: 10px;
+}
+body .body .taskDetail .metrics .detail div span.metric {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 10px;
+}
+body .body .taskDetail .metrics .detail div span.label {
+  color: #000000;
+  font-size: 11px;
+  font-weight: 600;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+body .body .taskDetail .build {
+  text-align: center;
+}
+body .body .taskDetail .build .debug,
+body .body .taskDetail .build .release {
+  padding: 0;
+}
+body .body .taskDetail .build .debug img,
+body .body .taskDetail .build .release img {
+  width: 90%!important;
+  display: inline-block;
+}
+body .body .taskDetail .build .debug span,
+body .body .taskDetail .build .release span {
+  color: #6F9EC5;
+  padding: 10px 0;
+  display: block;
+}
+body .body .taskDetail .test {
+  position: relative;
+}
+body .body .taskDetail .test .percent {
+  padding: 0;
+  margin-left: -15px;
+}
+body .body .taskDetail .test .percent span:first-child {
+  font-size: 24px;
+}
+body .body .taskDetail .test .percent span.passed {
+  color: #72AC4D;
+}
+body .body .taskDetail .test .percent span.fail {
+  color: #EB7D3B;
+}
+body .body .taskDetail .test .percent span:last-child {
+  color: #000000;
+  font-size: 10px;
+}
+body .body .taskDetail .test .covered {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  width: 90%;
+  height: 30px;
+  background-color: #F6CBAE;
+}
+body .body .taskDetail .test .covered .success {
+  position: absolute;
+  float: left;
+  height: 30px;
+  background-color: #C6DFB5;
+}
+body .body .taskDetail .test .covered .testInfo {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  float: left;
+  height: 30px;
+  background: none;
+}
+body .body .taskDetail .test .covered .testInfo span {
+  display: block;
+  color: #000000;
+  line-height: 14px;
+  opacity: 0.6;
+}
+body .body .taskDetail .test .covered .testInfo span:first-child {
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: bold;
+}
+body .body .taskDetail .test .covered .testInfo span:last-child {
+  font-size: 10px;
+}
+body .body .taskDetail .finalState {
+  padding-left: 0;
+  font-size: 26px;
+}

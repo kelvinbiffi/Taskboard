@@ -1,0 +1,23 @@
+<div class="col-sm-2">
+  <img src="image/{{taskInfo.type}}.png" alt="" /> <span class="{{ taskInfo.open ? 'opened' : '' }}">{{ taskInfo.taskId }}</span>
+ </div>
+<div class="col-sm-1">{{ taskInfo.owner }}</div>
+<div class="col-sm-2">{{ taskInfo.timeStarted }}</div>
+<div class="col-sm-1">{{ taskInfo.state }}</div>
+<div class="col-sm-6" ng-show="!taskInfo.open">
+  <div class="col-sm-3">
+    <div class="state {{ taskInfo.metrics.worked }} {{ taskInfo.state }}"></div>
+  </div>
+  <div class="col-sm-3">
+    <div class="state {{ taskInfo.build.worked }}"></div>
+  </div>
+  <div class="col-sm-3">
+    <div class="state {{ taskInfo.unitTest.worked }}"></div>
+  </div>
+  <div class="col-sm-3">
+    <div class="state {{ taskInfo.functionalTest.worked }}"></div>
+  </div>
+</div>
+<div class="col-sm-12 taskDetail" ng-show="taskInfo.open" ng-include="'templates/task/taskDetail.html'">
+  
+</div>

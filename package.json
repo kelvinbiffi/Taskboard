@@ -13,5 +13,9 @@
     "path": "*",
     "del": "*",
     "gulp-util": "*"
+  },
+  "dependencies": {
+    "angular-chart.js": "^1.0.3",
+    "chart.js": "^2.4.0"
   }
 }

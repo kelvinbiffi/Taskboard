@@ -1,5 +1,298 @@
 @backgroundColor: #F2F2F2;
 
+@colorPending: #CACACB;
+@colorRunning: #6F9EC5;
+@colorFail: #BC0008;
+@colorSucceed: #568E31;
+
+@colorPassedTest: #72AC4D;
+@colorFailTest: #EB7D3B;
+
+@colorBlack: #000000;
+@colorWhite: #FFFFFF;
+
+@colorCoveredCodeSuccess: #C6DFB5;
+@colorCoveredCodeFail: #F6CBAE;
+
+@colorRed: #BE0712;
+@colorYellow: #FED86E;
+@colorGreen: #548039;
+
+.boxShadow(@context){
+  -webkit-box-shadow: @context;
+  -moz-box-shadow: @context;
+  box-shadow: @context;
+}
+
 body{
   background-color: @backgroundColor;
+  
+  .head{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    div{
+      text-align: center;
+      &:first-child{
+        text-align: left;
+      }
+    }
+  }
+  
+  .body{
+    text-align: center;
+    
+    .task-content{
+      .opened{
+        text-decoration: underline;
+      }
+      padding: 3px 0;
+      margin: 5px 0;
+      border: 2px solid;
+      div{
+        text-align: center;
+        &:first-child{
+          padding-left: 0;
+          text-align: left;
+          img{
+            width: 30px;
+          }
+        }
+        
+        @stateBorderColor: darken(@colorPending, 10%);
+        .state{
+          height: 32px;
+          width: 48px;
+          border: 2px solid;
+          display: inline-block;
+          position: relative;
+          border-color: @stateBorderColor;
+          background-color: @colorPending;
+          &.true{
+            border-color: @stateBorderColor;
+            background-color: @colorSucceed;
+          }
+          &.false{
+            border-color: @stateBorderColor;
+            background-color: @colorFail;
+          }
+          &.Running{
+            &::before{
+              content: " ";
+              float: left;
+              background-color: @colorRunning;
+              width:65%;
+              height: 100%;
+            }
+          }
+        }
+      }
+      
+      @percentLight: 80%;
+      &.Pending{
+        border-color: @colorPending;
+        background-color: lighten(@colorPending,@percentLight);
+        div{
+          color: @colorPending;
+        }
+      }
+      
+      &.Running{
+        border-color: @colorRunning;
+        background-color: lighten(@colorRunning,@percentLight);
+        div{
+          color: @colorRunning;
+        }
+      }
+      
+      &.Succeed, &.Accepted, &.Complete{
+        cursor: pointer;
+        border-color: @colorSucceed;
+        background-color: lighten(@colorSucceed,@percentLight);
+        div{
+          color: @colorSucceed;
+        }
+      }
+      
+      &.Fail, &.Rejected{
+        cursor: pointer;
+        border-color: @colorFail;
+        background-color: lighten(@colorFail,@percentLight);
+        div{
+          color: @colorFail;
+        }
+      }
+    }
+    
+    .taskDetail{
+      padding: 0;
+      background: none!important;
+      .detail{
+        .boxShadow(1px 3px 13px 1px rgba(0,0,0,0.4));
+        text-align: center!important;
+        margin-bottom: 20px;
+        padding: 5px;
+        min-height: 240px;
+        h4{
+          text-align: left!important;
+          margin: 0;
+          margin-left: 5px;
+          padding-bottom: 15px;
+        }
+      }
+      .true{
+        .detail{
+          border: 2px solid @colorSucceed;
+          color: @colorSucceed;
+        }
+      }
+      .false{
+        .detail{
+          border: 2px solid @colorFail;
+          color: @colorFail;
+        }
+      }
+      
+      .metrics{
+        padding-left: 15px!important;
+        .detail{
+          div{
+            padding: 0;
+            position: relative;
+            padding: 0;
+            &::before{
+              content: " ";
+              width: 40px;
+              height: 40px;
+              position: absolute;
+              left: 0;
+              right: 0;
+              margin: auto;
+              
+            }
+            
+            &.red{
+              color: @colorWhite;
+              &::before{
+                background-color: @colorRed;
+              }
+            }
+            &.yellow{
+              color: @colorBlack;
+              &::before{
+                background-color: @colorYellow;
+              }
+            }
+            &.green{
+              color: @colorWhite;
+              &::before{
+                background-color: @colorGreen;
+              }
+            }
+            
+            span{
+              display: block;
+              padding: 10px;
+              &.metric{
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding: 10px;
+              }
+              &.label{
+                color: @colorBlack;;
+                font-size: 11px;
+                font-weight: 600;
+                padding-top: 50px;
+                padding-bottom: 10px;
+              }
+            }
+          }
+        }
+      }
+      
+      .build{
+        text-align: center;
+        .debug, .release{
+          padding: 0;
+          img{
+            width: 90%!important;
+            display: inline-block;
+          }
+          span{
+            color: @colorRunning;
+            padding: 10px 0;
+            display: block;
+          }
+        }
+      }
+      
+      .test{
+        position: relative;
+        .percent{
+          padding: 0;
+          margin-left: -15px;
+          span{
+            &:first-child{
+              font-size: 24px;
+            }
+            &.passed{
+              color: @colorPassedTest;
+            }
+            &.fail{
+              color: @colorFailTest;
+            }
+            &:last-child{
+              color: @colorBlack;
+              font-size: 10px;
+            }
+          }
+        }
+        .covered{
+          text-align: center;
+          display: inline-block;
+          position: relative;
+          width: 90%;
+          height: 30px;
+          background-color: @colorCoveredCodeFail;
+          
+          .success{
+            position: absolute;
+            float: left;
+            height: 30px;
+            background-color: @colorCoveredCodeSuccess;
+          }
+          .testInfo{
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            float: left;
+            height: 30px;
+            background: none;
+            span{
+              display: block;
+              color: @colorBlack;
+              line-height: 14px;
+              opacity: 0.6;
+              &:first-child{
+                margin-top: 2px;
+                font-size: 14px;
+                font-weight: bold;
+              }
+              &:last-child{
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+      
+      .finalState{
+        padding-left: 0;
+        font-size: 26px;
+      }
+      
+    }
+  }
 }

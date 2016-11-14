@@ -12,36 +12,32 @@
     <script src="app/app-backend.js"></script>
     <script src="app/services/serverDataModel.js"></script>
     <script src="app/services/HttpService.js"></script>
-    <script src="app\controllers\app-controller.js"></script>
+    <script src="app\controllers\boardController.js"></script>
+    <script src="app\controllers\taskController.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body ng-controller="boardController as ctrl" class="container-fluid">
-    <h1>Task Board</h1>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Changelist / Build</th>
-        <th>Owne</th>
-        <th>Time Started</th>
-        <th>State</th>
-        <th>Metrics</th>
-        <th>Buil</th>
-        <th>Unit Tes</th>
-        <th>Functional Test</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="task in tasks">
-        <td>Changelist / Build</td>
-        <td>Owne</td>
-        <td>Time Started</td>
-        <td>State</td>
-        <td>Metrics</td>
-        <td>Buil</td>
-        <td>Unit Tes</td>
-        <td>Functional Test</td>
-      </tr>
-    </tbody>
-  </table>
+  <body ng-controller="boardController as board" class="container-fluid">
+    <div class="head">
+      <div class="col-sm-2">Changelist / Build</div>
+      <div class="col-sm-1">Owner</div>
+      <div class="col-sm-2">Time Started</div>
+      <div class="col-sm-1">State</div>
+      <div class="col-sm-6">
+        <div class="col-sm-3">Metrics</div>
+        <div class="col-sm-3">Build</div>
+        <div class="col-sm-3">Unit Test</div>
+        <div class="col-sm-3">Functional Test</div>
+      </div>
+    </div>
+    <div class="body">
+      <div ng-repeat="taskInfo in tasks" 
+      class="col-sm-12 task-content {{ taskInfo.state }}" 
+      ng-controller="taskController as task"
+      ng-click="openTask.call(taskInfo, tasks)">
+        <ng-include src="'templates/task/info.html'"></ng-include>
+      </div>
+    </div>
   </body>
 </html>
